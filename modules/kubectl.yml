@@ -1,0 +1,19 @@
+---
+- name: install kubectl
+  become: yes
+  community.general.snap:
+    name: kubectl
+    classic: yes
+- name: create .kube directory
+  file:
+    path: ~/.kube
+    state: directory
+    mode: u=rwx,g=rx,o=rx
+- name: copy kubectl .config
+  copy:
+    src: "{{ kubectl_config_path }}"
+    dest: ~/.kube/config
+    mode: 0600
+- name: enable kubectl autocompletion
+  become: yes
+  shell: kubectl completion bash > /etc/bash_completion.d/kubectl

@@ -1,0 +1,5 @@
+---
+- name: install todoist
+  become: yes
+  community.general.snap:
+    name: todoist

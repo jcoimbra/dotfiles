@@ -1,0 +1,12 @@
+terraform_version: 0.15.3
+aws_cli_config_path: file_path
+aws_cli_credentials_path: file_path
+profile_d_file_path: file_path
+kubectl_config_path: file_path
+helm_repositories_path: file_path
+ssh_config_path: file_path
+ssh_private_key: file_path
+ssh_public_key: file_path
+ssh_known_hosts: file_path
+maven_settings_path: file_path
+teams_download_url: https://go.microsoft.com/fwlink/p/?LinkID=2112907&clcid=0x409&culture=en-us&country=US

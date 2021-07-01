@@ -1,0 +1,23 @@
+---
+- name: install openjdk8
+  become: yes
+  yum:
+    name: java-1.8.0-openjdk-devel
+- name: install openjdk11
+  become: yes
+  yum:
+    name: java-11-openjdk-devel
+- name: install maven
+  become: yes
+  yum:
+    name: maven
+- name: create .m2 directory
+  file:
+    path: ~/.m2
+    state: directory
+    mode: 0755
+- name: copy settings.xml
+  copy:
+    src: "{{ maven_settings_path }}"
+    dest: ~/.m2/settings.xml
+    mode: 0644

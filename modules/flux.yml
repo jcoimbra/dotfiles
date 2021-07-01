@@ -1,0 +1,18 @@
+---
+- name: download flux installation
+  get_url:
+    url: https://fluxcd.io/install.sh
+    dest: /tmp/install.sh
+    mode: 0744
+  tags:
+    - flux
+- name: install flux
+  become: yes
+  shell: /tmp/install.sh
+  tags:
+    - flux
+- name: bash completion
+  become: yes
+  shell: flux completion bash > /etc/bash_completion.d/flux
+  tags:
+    - flux

@@ -1,0 +1,10 @@
+---
+- name: install node
+  become: yes
+  yum:
+    name: nodejs
+- name: install yarn
+  become: yes
+  npm:
+    name: yarn
+    global: yes

@@ -1,0 +1,14 @@
+---
+- name: download teams
+  get_url:
+    url: "{{ teams_download_url }}"
+    mode: 0644
+    dest: /tmp/teams.rpm
+  tags:
+    - teams
+- name: install teams
+  become: yes
+  yum:
+    name: /tmp/teams.rpm
+  tags:
+    - teams

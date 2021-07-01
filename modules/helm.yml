@@ -1,0 +1,16 @@
+---
+- name: install helm
+  become: yes
+  community.general.snap:
+    name: helm
+    classic: yes
+- name: create directory to hold helm repos
+  file:
+    path: ~/.config/helm
+    state: directory
+    mode: 0755
+- name: add some helm repos
+  copy:
+    src: "{{ helm_repositories_path }}"
+    dest: ~/.config/helm/repositories.yaml
+    mode: 0644

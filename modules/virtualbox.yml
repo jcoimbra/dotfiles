@@ -1,0 +1,5 @@
+---
+- name: install virtual box
+  become: yes
+  yum:
+    name: VirtualBox

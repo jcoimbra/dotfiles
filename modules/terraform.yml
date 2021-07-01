@@ -1,0 +1,12 @@
+---
+- name: download terraform
+  get_url:
+    url: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
+    dest: /tmp/terraform.zip
+  register: terraform_download
+  check_mode: no
+- name: unarchive terraform
+  unarchive:
+    src: "{{ terraform_download.dest }}"
+    dest: ~/bin
+    mode: u=rwx,g=r,o=r

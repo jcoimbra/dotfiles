@@ -1,0 +1,29 @@
+---
+- name: download aws cli
+  get_url:
+    url: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+    dest: /tmp
+  register: aws_cli_download
+  check_mode: no
+- name: unarchive aws cli
+  unarchive:
+    src: "{{ aws_cli_download.dest }}"
+    dest: /tmp
+    mode: u=rwx,g=r,o=r
+- name: install aws-cli
+  shell: /tmp/aws/install -i ~/.local/aws-cli -b ~/.local/bin --update
+- name: create directory with aws cli configuration
+  file:
+    path: ~/.aws
+    state: directory
+    mode: u=rwx,g=rx,o=r
+- name: copy aws cli config
+  copy:
+    src: "{{ aws_cli_config_path }}"
+    dest: "~/.aws"
+    mode: u=rw,g=rx,o=r
+- name: copy aws cli credentials
+  copy:
+    src: "{{ aws_cli_credentials_path }}"
+    dest: "~/.aws"
+    mode: u=rw,g=rx,o=r

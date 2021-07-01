@@ -1,0 +1,5 @@
+---
+- name: install postman
+  become: yes
+  community.general.flatpak:
+    name: postman

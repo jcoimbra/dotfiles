@@ -1,0 +1,41 @@
+---
+- name: disable selinux
+  become: yes
+  selinux:
+    state: disabled
+- name: create bin directory
+  file:
+    path: ~/bin
+    state: directory
+- name: create projects dir
+  file:
+    path: ~/projects
+    state: directory
+- name: edit profile.d
+  become: yes
+  copy:
+    src: "{{ profile_d_file_path }}"
+    dest: /etc/profile.d/custom.sh
+    mode: u=rw,g=r,o=r
+- name: install snapd
+  become: yes
+  yum:
+    name: snapd
+- name: enable snapd
+  become: yes
+  service:
+    name: snapd
+    enabled: yes
+    state: started
+- name: create /snap
+  become: yes
+  file:
+    dest: /snap
+    src: /var/lib/snapd/snap
+    state: link
+- name: add flathub
+  shell: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+- name: install bash-completion
+  become: yes
+  yum:
+    name: bash-completion

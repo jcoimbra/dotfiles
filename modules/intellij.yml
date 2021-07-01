@@ -1,0 +1,6 @@
+---
+- name: install intellij
+  become: yes
+  community.general.snap:
+    name: intellij-idea-ultimate
+    classic: yes

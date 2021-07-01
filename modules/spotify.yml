@@ -1,0 +1,5 @@
+---
+- name: install spotify
+  become: yes
+  community.general.flatpak:
+    name: spotify

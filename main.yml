@@ -1,0 +1,146 @@
+---
+- name: configure local environment
+  hosts: localhost
+  vars_files:
+    - variables.yml
+  tasks:
+    - include_tasks:
+        file: modules/general_config.yml
+        apply:
+          tags:
+            - general_config
+      tags:
+        - general_config
+    - include_tasks:
+        file: modules/slack.yml
+        apply:
+          tags:
+            - slack
+      tags:
+        - slack
+    - include_tasks:
+        file: modules/teams.yml
+        apply:
+          tags:
+            - teams
+      tags:
+        - teams
+    - include_tasks:
+        file: modules/spotify.yml
+        apply:
+          tags:
+            - spotify
+      tags:
+        - spotify
+    - include_tasks:
+        file: modules/flux.yml
+        apply:
+          tags:
+            - flux
+      tags:
+        - flux
+    - include_tasks:
+        file: modules/virtualbox.yml
+        apply:
+          tags:
+            - virtualbox
+      tags:
+        - virtualbox
+    - include_tasks:
+        file: modules/vagrant.yml
+        apply:
+          tags:
+            - vagrant
+      tags:
+        - vagrant
+    - include_tasks:
+        file: modules/postman.yml
+        apply:
+          tags:
+            - postman
+      tags:
+        - postman
+    - include_tasks:
+        file: modules/todoist.yml
+        apply:
+          tags:
+            - todoist
+      tags:
+        - todoist
+    - include_tasks:
+        file: modules/gnome.yml
+        apply:
+          tags:
+            - gnome
+      tags:
+        - gnome
+    - include_tasks:
+        file: modules/multimedia.yml
+        apply:
+          tags:
+            - multimedia
+      tags:
+        - multimedia
+    - include_tasks:
+        file: modules/terraform.yml
+        apply:
+          tags:
+            - terraform
+      tags:
+        - terraform
+    - include_tasks:
+        file: modules/kubectl.yml
+        apply:
+          tags:
+            - kubectl
+      tags:
+        - kubectl
+    - include_tasks:
+        file: modules/helm.yml
+        apply:
+          tags:
+            - helm
+      tags:
+        - helm
+    - include_tasks:
+        file: modules/aws.yml
+        apply:
+          tags:
+            - aws
+      tags:
+        - aws
+    - include_tasks:
+        file: modules/git.yml
+        apply:
+          tags:
+            - git
+      tags:
+        - git
+    - include_tasks:
+        file: modules/intellij.yml
+        apply:
+          tags:
+            - intellij
+      tags:
+        - intellij
+    - include_tasks:
+        file: modules/ssh.yml
+        apply:
+          tags:
+            - ssh
+      tags:
+        - ssh
+    - include_tasks:
+        file: modules/java.yml
+        apply:
+          tags:
+            - java
+      tags:
+        - java
+    - include_tasks:
+        file: modules/node.yml
+        apply:
+          tags:
+            - node
+      tags:
+        - node

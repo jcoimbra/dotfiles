@@ -1,0 +1,26 @@
+---
+- name: create .ssh directory
+  file:
+    path: ~/.ssh
+    state: directory
+    mode: 0755
+- name: copy ssh config
+  copy:
+    src: "{{ ssh_config_path }}"
+    dest: ~/.ssh/config
+    mode: 0644
+- name: copy ssh private key
+  copy:
+    src: "{{ ssh_private_key }}"
+    dest: ~/.ssh/id_rsa
+    mode: 0600
+- name: copy ssh public key
+  copy:
+    src: "{{ ssh_public_key }}"
+    dest: ~/.ssh/id_rsa.pub
+    mode: 0644
+- name: copy ssh known hosts
+  copy:
+    src: "{{ ssh_known_hosts }}"
+    dest: ~/.ssh/known_hosts
+    mode: 0644

@@ -1,0 +1,15 @@
+---
+- name: install dnf-plugins-core
+  become: yes
+  yum:
+    name:
+      - dnf-plugins-core
+- name: add hashicorp repo
+  become: yes
+  get_url:
+    url: https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+    dest: /etc/yum.repos.d/hashicorp.repo
+- name: install vagrant
+  become: yes
+  yum:
+    name: vagrant

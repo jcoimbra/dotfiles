@@ -1,0 +1,5 @@
+---
+- name: install gnome tweak tool
+  become: yes
+  yum:
+    name: gnome-tweak-tool
