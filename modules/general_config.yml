@@ -3,38 +3,59 @@
   become: yes
   selinux:
     state: disabled
+
 - name: create bin directory
   file:
     path: ~/bin
     state: directory
+
 - name: create projects dir
   file:
     path: ~/projects
     state: directory
+
 - name: edit profile.d
   become: yes
   copy:
     src: "{{ profile_d_file_path }}"
     dest: /etc/profile.d/custom.sh
     mode: u=rw,g=r,o=r
+
+- name: get fedora version
+  shell: rpm -E %fedora
+  register: fedora_version
+  check_mode: no
+
+- name: enable rpm fusion
+  become: yes
+  yum:
+    disable_gpg_check: yes
+    name:
+      - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version.stdout }}.noarch.rpm
+      - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version.stdout }}.noarch.rpm
+
 - name: install snapd
   become: yes
   yum:
     name: snapd
+
 - name: enable snapd
   become: yes
   service:
     name: snapd
     enabled: yes
     state: started
+
 - name: create /snap
   become: yes
   file:
     dest: /snap
     src: /var/lib/snapd/snap
     state: link
+
 - name: add flathub
   shell: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
 - name: install bash-completion
   become: yes
   yum:

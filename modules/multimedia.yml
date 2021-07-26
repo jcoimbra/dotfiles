@@ -1,15 +1,4 @@
 ---
-- name: get fedora version
-  shell: rpm -E %fedora
-  register: fedora_version
-  check_mode: no
-- name: enable rpm fusion
-  become: yes
-  yum:
-    disable_gpg_check: yes
-    name:
-      - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version.stdout }}.noarch.rpm
-      - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version.stdout }}.noarch.rpm
 - name: install codecs
   become: yes
   yum:
