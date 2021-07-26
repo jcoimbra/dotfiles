@@ -10,5 +10,6 @@
   become: yes
   yum:
     name: /tmp/teams.rpm
+    disable_gpg_check: yes
   tags:
     - teams
