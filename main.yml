@@ -12,6 +12,20 @@
       tags:
         - general_config
     - include_tasks:
+        file: modules/gnome.yml
+        apply:
+          tags:
+            - gnome
+      tags:
+        - gnome
+    - include_tasks:
+        file: modules/multimedia.yml
+        apply:
+          tags:
+            - multimedia
+      tags:
+        - multimedia
+    - include_tasks:
         file: modules/slack.yml
         apply:
           tags:
@@ -67,20 +81,6 @@
             - todoist
       tags:
         - todoist
-    - include_tasks:
-        file: modules/gnome.yml
-        apply:
-          tags:
-            - gnome
-      tags:
-        - gnome
-    - include_tasks:
-        file: modules/multimedia.yml
-        apply:
-          tags:
-            - multimedia
-      tags:
-        - multimedia
     - include_tasks:
         file: modules/terraform.yml
         apply:
