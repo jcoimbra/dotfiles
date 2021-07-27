@@ -3,3 +3,8 @@
   become: yes
   yum:
     name: gnome-tweak-tool
+
+- name: install variety
+  become: yes
+  yum:
+    name: variety
