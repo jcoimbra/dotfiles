@@ -144,3 +144,9 @@
             - node
       tags:
         - node
+    - include_tasks:
+        file: modules/vpn.yml
+        apply:
+          tags:
+            - vpn
+      tags: vpn

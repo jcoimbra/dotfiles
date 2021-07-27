@@ -9,4 +9,5 @@ ssh_private_key: file_path
 ssh_public_key: file_path
 ssh_known_hosts: file_path
 maven_settings_path: file_path
+vpn_network_manager_config: file_path
 teams_download_url: https://go.microsoft.com/fwlink/p/?LinkID=2112907&clcid=0x409&culture=en-us&country=US
