@@ -1,6 +1,5 @@
 ---
 - name: install slack
   become: yes
-  community.general.snap:
+  community.general.flatpak:
     name: slack
-    classic: yes
