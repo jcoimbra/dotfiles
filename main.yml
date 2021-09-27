@@ -110,6 +110,13 @@
       tags:
         - aws
     - include_tasks:
+        file: modules/azure.yml
+        apply:
+          tags:
+            - azure
+      tags:
+        - azure
+    - include_tasks:
         file: modules/git.yml
         apply:
           tags:
