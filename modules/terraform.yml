@@ -10,3 +10,5 @@
     src: "{{ terraform_download.dest }}"
     dest: ~/bin
     mode: u=rwx,g=r,o=r
+- name: install autocompletion
+  shell: terraform -install-autocomplete
